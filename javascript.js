@@ -35,12 +35,12 @@ function playRound(humanChoice , compChoice){
     else if((humanChoice == "Rock" && compChoice == "Scissor") 
         || (humanChoice == "Paper" && compChoice == "Rock") 
         || (humanChoice == "Scissor" && compChoice == "Paper")){
-        console.log("You Win");
-        console.log(++humanScore);
+        console.log("You Win this round");
+        ++humanScore;
     }
     else{
-        console.log("You Lose");
-        console.log(++computerScore);
+        console.log("You Lose this round");
+        ++computerScore;
     }
 
 }
@@ -51,3 +51,54 @@ console.log(`You Picked ${humanSelection}`);
 console.log(`Computer Picked ${computerSelection}`);
 
 playRound(humanSelection , computerSelection);
+
+console.log("--------------------------------------");
+
+humanSelection = getHumanChoice();
+computerSelection = getComputerChoice();
+console.log(`You Picked ${humanSelection}`);
+console.log(`Computer Picked ${computerSelection}`);
+
+playRound(humanSelection , computerSelection);
+
+console.log("--------------------------------------");
+
+humanSelection = getHumanChoice();
+computerSelection = getComputerChoice();
+console.log(`You Picked ${humanSelection}`);
+console.log(`Computer Picked ${computerSelection}`);
+
+playRound(humanSelection , computerSelection);
+
+console.log("--------------------------------------");
+
+humanSelection = getHumanChoice();
+computerSelection = getComputerChoice();
+console.log(`You Picked ${humanSelection}`);
+console.log(`Computer Picked ${computerSelection}`);
+
+playRound(humanSelection , computerSelection);
+
+console.log("--------------------------------------");
+
+humanSelection = getHumanChoice();
+computerSelection = getComputerChoice();
+console.log(`You Picked ${humanSelection}`);
+console.log(`Computer Picked ${computerSelection}`);
+
+playRound(humanSelection , computerSelection);
+
+console.log("--------------------------------------");
+
+console.log(`Your Won ${humanScore} matches`);
+console.log(`Your Opponent Won ${computerScore} matches`);
+
+if(humanScore > computerScore){
+    console.log("Congrats You Won the matchup")
+}
+else if(humanScore == computerScore){
+    console.log("Wheoo! That was a tie")
+}
+else{
+    console.log("You Lost. Better Luck next time")
+}

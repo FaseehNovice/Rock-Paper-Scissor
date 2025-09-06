@@ -24,3 +24,30 @@ function getHumanChoice(){
         return "Scissors"
     }
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice , compChoice){
+    if(humanChoice == compChoice){
+        console.log("That's a tie");
+    }
+    else if((humanChoice == "Rock" && compChoice == "Scissor") 
+        || (humanChoice == "Paper" && compChoice == "Rock") 
+        || (humanChoice == "Scissor" && compChoice == "Paper")){
+        console.log("You Win");
+        console.log(++humanScore);
+    }
+    else{
+        console.log("You Lose");
+        console.log(++computerScore);
+    }
+
+}
+
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+console.log(`You Picked ${humanSelection}`);
+console.log(`Computer Picked ${computerSelection}`);
+
+playRound(humanSelection , computerSelection);

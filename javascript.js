@@ -12,8 +12,9 @@ function getComputerChoice(){
     }
 }
 
+/*
 function getHumanChoice(){
-    let humanChoice = parseInt(prompt("Choose\n1: Rock\n2: Paper\n3: Scissors "))
+    let humanChoice = parseInt(prompt("Choose\n1: Rock\n2: Paper\n3: Scissor "))
     if(humanChoice == 1){
         return "Rock"
     }
@@ -21,9 +22,10 @@ function getHumanChoice(){
         return "Paper"
     }
     else{
-        return "Scissors"
+        return "Scissor"
     }
 }
+*/
 
 let humanScore = 0;
 let computerScore = 0;
@@ -32,9 +34,9 @@ function playRound(humanChoice , compChoice){
     if(humanChoice == compChoice){
         console.log("That's a tie");
     }
-    else if((humanChoice == "Rock" && compChoice == "Scissor") 
+    else if((humanChoice == "Rock" && compChoice == "Scissors") 
         || (humanChoice == "Paper" && compChoice == "Rock") 
-        || (humanChoice == "Scissor" && compChoice == "Paper")){
+        || (humanChoice == "Scissors" && compChoice == "Paper")){
         console.log("You Win this round");
         ++humanScore;
     }
@@ -45,60 +47,42 @@ function playRound(humanChoice , compChoice){
 
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
-console.log(`You Picked ${humanSelection}`);
-console.log(`Computer Picked ${computerSelection}`);
+let buttons = document.querySelectorAll("button");
 
-playRound(humanSelection , computerSelection);
+let humanSelection;
+let computerSelection;
 
-console.log("--------------------------------------");
+buttons.forEach((button) => {
+    button.addEventListener("click",() => {
+        console.clear();
+        humanSelection = button.id;
+        computerSelection = getComputerChoice();
 
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
-console.log(`You Picked ${humanSelection}`);
-console.log(`Computer Picked ${computerSelection}`);
+        console.log("**************************************");
+        playRound(humanSelection , computerSelection);
 
-playRound(humanSelection , computerSelection);
+        console.log("--------------------------------------");
 
-console.log("--------------------------------------");
+        console.log(`You Picked ${humanSelection}`);
+        console.log(`Computer Picked ${computerSelection}`);
 
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
-console.log(`You Picked ${humanSelection}`);
-console.log(`Computer Picked ${computerSelection}`);
+        console.log("--------------------------------------");
 
-playRound(humanSelection , computerSelection);
+        console.log(`You Won ${humanScore} matches`);
+        console.log(`Your Opponent Won ${computerScore} matche(s)`);
 
-console.log("--------------------------------------");
+        if (humanScore === 5 || computerScore === 5) {
+            if (humanScore > computerScore) {
+                console.log("🎉 Congrats You Won the matchup!");
+            } else {
+                console.log("💻 You Lost. Better Luck next time!");
+            }
+        humanScore = 0;
+        computerScore = 0;
+        
+        console.log("Scores have been reset. Play again!");
+        }   
+    })
+})
 
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
-console.log(`You Picked ${humanSelection}`);
-console.log(`Computer Picked ${computerSelection}`);
 
-playRound(humanSelection , computerSelection);
-
-console.log("--------------------------------------");
-
-humanSelection = getHumanChoice();
-computerSelection = getComputerChoice();
-console.log(`You Picked ${humanSelection}`);
-console.log(`Computer Picked ${computerSelection}`);
-
-playRound(humanSelection , computerSelection);
-
-console.log("--------------------------------------");
-
-console.log(`Your Won ${humanScore} matches`);
-console.log(`Your Opponent Won ${computerScore} matches`);
-
-if(humanScore > computerScore){
-    console.log("Congrats You Won the matchup")
-}
-else if(humanScore == computerScore){
-    console.log("Wheoo! That was a tie")
-}
-else{
-    console.log("You Lost. Better Luck next time")
-}
